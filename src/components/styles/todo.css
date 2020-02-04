@@ -19,7 +19,7 @@
 }
 
 .content::-webkit-scrollbar {
-  width: 1.5rem;
+  width: 1.2rem;
 }
 
 .content::-webkit-scrollbar-thumb {
@@ -101,7 +101,6 @@ form .btn:hover {
 }
 
 .box .item {
-  font-size: 1.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
   -webkit-box-flex: 80%;

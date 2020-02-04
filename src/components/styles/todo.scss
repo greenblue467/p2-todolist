@@ -2,8 +2,8 @@ $color: #78c2c4;
 $wid: 80%;
 $halfWid: $wid/2;
 $fontSize: (
+  "samll": 1rem,
   "medium": 1.2rem,
-  "mediuml": 1.5rem,
   "large": 2rem
 );
 @function sizing($kind) {
@@ -59,7 +59,7 @@ $fontSize: (
   top: 10%;
   left: 50%-$halfWid;
   @include paddings(2.5rem);
-  @include scrollbars(1.5rem, #dddddd, #eeeeee);
+  @include scrollbars(1.2rem, #dddddd, #eeeeee);
   @include pad {
     width: $wid/1.5;
     left: 50% - ($halfWid/1.5);
@@ -106,7 +106,7 @@ form {
   @include paddings(1rem);
   margin-bottom: 1rem;
   .item {
-    font-size: sizing(mediuml);
+    font-size: sizing(small);
     margin-left: 1rem;
     margin-right: 1rem;
     flex: 80%;
