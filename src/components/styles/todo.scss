@@ -1,0 +1,174 @@
+$color: #78c2c4;
+$wid: 80%;
+$halfWid: $wid/2;
+$fontSize: (
+  "medium": 1.2rem,
+  "mediuml": 1.5rem,
+  "large": 2rem
+);
+@function sizing($kind) {
+  @return map-get($fontSize, $kind);
+}
+@mixin paddings($size) {
+  box-sizing: border-box;
+  padding: $size;
+}
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  &::-webkit-scrollbar {
+    width: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: lighten($foreground-color, 2%);
+    border-radius: 2rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+    border-radius: 2rem;
+  }
+}
+@mixin pad {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+.allbg {
+  width: 100vw;
+  height: 100vh;
+  background-color: $color;
+}
+
+.content {
+  background-color: #ffffff;
+  width: $wid;
+  height: 80vh;
+  overflow: auto;
+  border-radius: 1rem;
+  position: relative;
+  top: 10%;
+  left: 50%-$halfWid;
+  @include paddings(2.5rem);
+  @include scrollbars(1.5rem, #dddddd, #eeeeee);
+  @include pad {
+    width: $wid/1.5;
+    left: 50% - ($halfWid/1.5);
+  }
+  @include desktop {
+    width: $wid/2.5;
+    left: 50% - ($halfWid/2.5);
+  }
+
+  .title {
+    font-size: sizing(large);
+    font-weight: bold;
+    color: $color;
+    text-align: center;
+  }
+}
+
+form {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid $color;
+  margin: 1.2rem 0;
+  .input {
+    flex: 90%;
+    font-size: sizing(medium);
+    border: none;
+    padding: 0.5rem 0;
+  }
+  .btn {
+    @extend .input;
+    flex: 10%;
+    cursor: pointer;
+    color: $color;
+    font-weight: bold;
+    &:hover {
+      color: darken($color, 10%);
+    }
+  }
+}
+.box {
+  display: flex;
+  align-items: center;
+  background-color: lighten($color, 30%);
+  @include paddings(1rem);
+  margin-bottom: 1rem;
+  .item {
+    font-size: sizing(mediuml);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 80%;
+    color: #434343;
+    overflow: auto;
+  }
+  .round {
+    position: relative;
+    label {
+      border: 1px solid grey;
+      border-radius: 999em;
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      &::after {
+        content: "";
+        border-bottom: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 10px;
+        height: 6px;
+        transform: rotate(-45deg);
+        opacity: 0;
+      }
+    }
+    input[type="checkbox"] {
+      visibility: hidden;
+    }
+    input[type="checkbox"]:checked + label {
+      background-color: $color;
+      border: 1px solid $color;
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  .icon {
+    color: lighten(red, 25%);
+    font-size: sizing(medium);
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.rebtn {
+  border: none;
+  cursor: pointer;
+  font-size: sizing(medium);
+  font-weight: bold;
+  background-color: $color;
+  color: #ffffff;
+  border-radius: 1rem;
+  @include paddings(0.8rem);
+  float: right;
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+}
