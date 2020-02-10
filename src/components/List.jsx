@@ -8,7 +8,7 @@ class List extends Component {
     todo: [
       {
         id: 1,
-        title: "做運動",
+        title: "倒垃圾",
         complete: false
       },
       {
