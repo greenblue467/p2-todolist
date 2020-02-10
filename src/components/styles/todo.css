@@ -66,6 +66,7 @@ form {
 }
 
 form .input, form .btn {
+  font-family: Arial, sans-serif, LiHei Pro, Microsoft JhengHei;
   -webkit-box-flex: 90%;
       -ms-flex: 90%;
           flex: 90%;
@@ -81,6 +82,7 @@ form .btn {
   cursor: pointer;
   color: #78c2c4;
   font-weight: bold;
+  background-color: none;
 }
 
 form .btn:hover {

@@ -84,6 +84,7 @@ form {
   border-bottom: 2px solid $color;
   margin: 1.2rem 0;
   .input {
+    font-family: Arial, sans-serif, LiHei Pro, Microsoft JhengHei;
     flex: 90%;
     font-size: sizing(medium);
     border: none;
@@ -95,6 +96,7 @@ form {
     cursor: pointer;
     color: $color;
     font-weight: bold;
+    background-color: none;
     &:hover {
       color: darken($color, 10%);
     }
