@@ -1,6 +1,4 @@
 $color: #78c2c4;
-$wid: 80%;
-$halfWid: $wid/2;
 $fontSize: (
   "samll": 1rem,
   "medium": 1.2rem,
@@ -46,28 +44,31 @@ $fontSize: (
 .allbg {
   width: 100vw;
   height: 100vh;
+  position: fixed;
+  overflow: auto;
   background-color: $color;
   font-family: Arial, sans-serif, LiHei Pro, Microsoft JhengHei;
 }
 
 .content {
   background-color: #ffffff;
-  width: $wid;
-  height: 80vh;
-  overflow: auto;
+  width: 300px;
+  height: 500px;
   border-radius: 1rem;
   position: relative;
   top: 10%;
-  left: 50%-$halfWid;
+  left: calc(50% - 150px);
   @include paddings(2.5rem);
-  @include scrollbars(1.2rem, #dddddd, #eeeeee);
   @include pad {
-    width: $wid/1.5;
-    left: 50% - ($halfWid/1.5);
+    width: 400px;
+    height: 600px;
+    left: calc(50% - 200px);
   }
   @include desktop {
-    width: $wid/2.5;
-    left: 50% - ($halfWid/2.5);
+    width: 500px;
+    height: 550px;
+    left: calc(50% - 250px);
+    top: 5%;
   }
 
   .title {
@@ -102,61 +103,76 @@ form {
     }
   }
 }
-.box {
-  display: flex;
-  align-items: center;
-  background-color: lighten($color, 30%);
-  @include paddings(1rem);
+.todo_list {
+  width: 100%;
+  height: 250px;
+  overflow: auto;
+  @include scrollbars(0.5rem, lighten(grey, 30%), #eeeeee);
   margin-bottom: 1rem;
-  .item {
-    font-size: sizing(small);
-    margin-left: 1rem;
-    margin-right: 1rem;
-    flex: 80%;
-    color: #434343;
-    overflow: auto;
+  @include pad {
+    height: 320px;
+    margin-bottom: 2rem;
   }
-  .round {
-    position: relative;
-    label {
-      border: 1px solid grey;
-      border-radius: 999em;
-      width: 1rem;
-      height: 1rem;
-      position: absolute;
-      top: 0;
-      left: 0;
-      cursor: pointer;
-      &::after {
-        content: "";
-        border-bottom: 2px solid #ffffff;
-        border-left: 2px solid #ffffff;
+  @include desktop {
+    height: 300px;
+    margin-bottom: 1.5rem;
+  }
+  .box {
+    display: flex;
+    align-items: center;
+    background-color: lighten($color, 30%);
+    @include paddings(1rem);
+    margin-bottom: 1rem;
+    .item {
+      font-size: sizing(small);
+      margin-left: 1rem;
+      margin-right: 1rem;
+      flex: 80%;
+      color: #434343;
+      overflow: auto;
+    }
+    .round {
+      position: relative;
+      label {
+        border: 1px solid grey;
+        border-radius: 999em;
+        width: 1rem;
+        height: 1rem;
         position: absolute;
-        top: 2px;
-        left: 2px;
-        width: 10px;
-        height: 6px;
-        transform: rotate(-45deg);
-        opacity: 0;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        &::after {
+          content: "";
+          border-bottom: 2px solid #ffffff;
+          border-left: 2px solid #ffffff;
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 10px;
+          height: 6px;
+          transform: rotate(-45deg);
+          opacity: 0;
+        }
+      }
+      input[type="checkbox"] {
+        visibility: hidden;
+      }
+      input[type="checkbox"]:checked + label {
+        background-color: $color;
+        border: 1px solid $color;
+        &::after {
+          opacity: 1;
+        }
       }
     }
-    input[type="checkbox"] {
-      visibility: hidden;
-    }
-    input[type="checkbox"]:checked + label {
-      background-color: $color;
-      border: 1px solid $color;
-      &::after {
-        opacity: 1;
+    .icon {
+      color: lighten(red, 25%);
+      font-size: sizing(medium);
+      cursor: pointer;
+      &:hover {
+        color: red;
       }
-    }
-  }
-  .icon {
-    color: lighten(red, 25%);
-    font-size: sizing(medium);
-    cursor: pointer;
-    &:hover {
-      color: red;
     }
   }
 }
