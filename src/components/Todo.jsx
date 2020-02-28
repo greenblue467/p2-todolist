@@ -6,6 +6,7 @@ const Todo = props => {
     textDecoration: props.todo.complete && "line-through",
     color: props.todo.complete && "grey"
   };
+
   return (
     <div className="box">
       <span className="round">
@@ -14,7 +15,7 @@ const Todo = props => {
           id={props.todo.id}
           onClick={() => props.check(props.todo.id)}
         />
-        <label for={props.todo.id}></label>
+        <label htmlFor={props.todo.id}></label>
       </span>
       <span className="item" style={textStyle}>
         {props.todo.title}

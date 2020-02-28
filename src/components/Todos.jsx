@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import todo from "./styles/todo.css";
 import Todo from "./Todo";
 
