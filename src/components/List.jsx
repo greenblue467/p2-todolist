@@ -20,14 +20,12 @@ class List extends Component {
     ],
     newItem: ""
   };
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     const result = localStorage.getItem("name");
     if (result) {
       const show = JSON.parse(result);
       this.setState({ todo: show });
     }
-  }
-  componentDidMount() {
     const newState = [...this.state.todo];
     const newArray = newState.map(x => {
       if (x.complete) {
@@ -79,7 +77,7 @@ class List extends Component {
   reset = () => {
     this.setState({ todo: [] });
   };
-  UNSAFE_componentWillUpdate = (nextProps, nextState) => {
+  componentDidUpdate = (nextProps, nextState) => {
     const storage = JSON.stringify(nextState.todo);
     localStorage.setItem("name", storage);
   };
